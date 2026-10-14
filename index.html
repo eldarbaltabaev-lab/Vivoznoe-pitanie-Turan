@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Подсчёт сотрудников по локациям</title>
+  <link rel="stylesheet" href="styles.css" />
+
+ 
+</head>
+<body>
+  <header>
+    <div class="btw">
+      <nav class="nvg">
+        <a href="index.html">Главная</a>
+        <a href="page2.html">Настройки</a>
+ 
+      </nav>    
+    </div>
+  </header>
+  <button id="printAll">Печать</button>
+  <main class="container">
+    <h1>Подсчёт сотрудников по локациям</h1>
+    <p class="muted">
+      Перетащите .xlsx файлы (можно сразу много) или выберите вручную.
+      День и Ночь считаются отдельно, метки «Ланчбокс» и «Диета» уходят в LBX.
+    </p>
+
+    <div id="dropzone" class="dropzone">
+      <input type="file" id="file-input" accept=".xlsx,.xls" multiple hidden />
+      <div class="dropzone-inner">
+        <strong>Перетащите файлы сюда</strong>
+        <span class="muted gr">или нажмите, чтобы выбрать</span>
+      </div>
+    </div>
+
+    <div id="progress" class="progress hidden">
+      <div class="progress-bar"><div id="progress-fill"></div></div>
+      <span id="progress-text" class="muted"></span>
+    </div>
+
+    <p id="status" class="muted"></p>
+
+    <section id="summary" class="summary hidden"></section>
+    <section id="results"></section>
+  </main>
+  <script src="settings.js"></script>
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.2/package/dist/xlsx.full.min.js"></script>
+    <script src="print.js"></script>
+  <script>
+  // ваш основной код, где importedFiles заполняется
+    document.getElementById('printAll').addEventListener('click', () => {
+      printAllSheets(importedFiles || []);
+  });
+</script>
+  <script type="module" src="script.js"></script>
+</body>
+</html>
